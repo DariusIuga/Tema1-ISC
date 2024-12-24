@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import math
 import base64
+import math
 import random
 
 
@@ -12,7 +12,7 @@ class LCG:
     def __init__(self, a, b):
         self.a = a
         self.b = b
-        self.mod = 2 ** 16
+        self.mod = 2**16
         self.state = 0
 
     def next(self):
@@ -20,11 +20,14 @@ class LCG:
         return self.state
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     flag = "This_Is_NOT_SpeishFlag{asdfg_not_that_easy}"
-    plaintext = "Stay your hand! Gotcha!\n" + \
-        "You do not know this part, \n" + \
-        "but it ends with a\n" + flag
+    plaintext = (
+        "Stay your hand! Gotcha!\n"
+        + "You do not know this part, \n"
+        + "but it ends with a\n"
+        + flag
+    )
     # note: message is always ASCII!
     bintext = plaintext.encode("ASCII")
 
@@ -35,4 +38,3 @@ if __name__ == '__main__':
 
     ciphertext = xor(bintext, key)
     print(base64.b64encode(ciphertext).decode("ASCII"))
-

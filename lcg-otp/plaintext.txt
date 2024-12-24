@@ -1,0 +1,4 @@
+Flag found with a=3650 b=6170: Numele meu e Expres
+M-a miruit Dumnezeu
+Ca sa am noroc si eu
+SpeishFlag{4OhBExuqz1UbwOELG29RN2CYwr56Zxto}

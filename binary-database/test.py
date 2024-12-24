@@ -1,10 +1,10 @@
-import sys
-import struct
-import socket
 import ctypes
+import socket
+import struct
+import sys
 
 
-class ReqPacket():
+class ReqPacket:
     DB_NOOP = 0
     DB_RETRIEVE = 1
     DB_STORE = 2
@@ -58,7 +58,7 @@ class ReqPacket():
         return cls(cls.DB_DELETE, key)
 
 
-class ReplyPacket():
+class ReplyPacket:
     RAW_TYPE_MAP = {
         0: (None, ""),
         1: (int, "<i"),
@@ -101,7 +101,9 @@ class ReplyPacket():
             s += f"key={str(self.key)}, "
         return f"DBEntry{{ status={self.status}, {s}val={str(self.value)} }}"
 
+
 DEBUG = False
+
 
 def send_request(sock, req_obj):
     data = req_obj
@@ -145,7 +147,9 @@ def main(argv):
     reply = send_request(sock, ReqPacket.retrieve("my_first_test"))
     print(reply)
 
-    reply = send_request(sock, ReqPacket.store("last_test_entry", "Please don't crash!"))
+    reply = send_request(
+        sock, ReqPacket.store("last_test_entry", "Please don't crash!")
+    )
     print(reply)
     reply = send_request(sock, ReqPacket.retrieve("last_test_entry"))
     print(reply)
